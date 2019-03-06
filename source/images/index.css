@@ -9,6 +9,7 @@ html, body{
 
 body{
 	position: relative;
+	overflow:hidden;
 }
 
 em{
@@ -19,9 +20,9 @@ em{
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	width: 640px;
-	height: 480px;
-	margin: -280px auto auto -320px;
+	width: 1280px;
+	height: 960px;
+	margin: -560px auto auto -640px;
 	text-align: left;
 	background: #fff;
 }
@@ -41,8 +42,8 @@ em{
 	position: absolute;
 	left: 0;
 	top: 0;
-	width: 640px;
-	height: 480px;
+	width: 1280px;
+	height: 960px;
 	z-index: 10;
 }
 

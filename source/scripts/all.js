@@ -157,8 +157,8 @@ define("scripts/control.js", function(exports){
 		var de = document.documentElement;
 	
 		var fix = function(e){
-		    canvasLeft = (de.clientWidth - 640) / 2;
-		    canvasTop = (de.clientHeight - 480) / 2 - 40;
+		    canvasLeft = (de.clientWidth - 1280) / 2;
+		    canvasTop = (de.clientHeight - 960) / 2 - 40;
 		};
 	
 		fix();
@@ -207,7 +207,7 @@ define("scripts/game.js", function(exports){
 	    if( fruits.length >= volleyNum )
 	        return ;
 	
-	    var startX = random( 640 ), endX = random( 640 ), startY = 600;
+	    var startX = random( 1280 ), endX = random( 1280 ), startY = 900;
 	    var f = fruit.create( startX, startY ).shotOut( 0, endX );
 	
 	    fruits.push( f );
@@ -290,8 +290,8 @@ define("scripts/game.js", function(exports){
 	    if( state( "game-state" ).isnot( "playing" ) )
 	        return ;
 	
-	    if( fruit.type != "boom" )
-	        lose.showLoseAt( fruit.originX );
+	    //if( fruit.type != "boom" )
+	    //    lose.showLoseAt( fruit.originX );
 	});
 	
 	message.addEventListener("game.over", function(){
@@ -366,7 +366,7 @@ define("scripts/layer.js", function(exports){
 		}else{
 			layer = Ucren.makeElement( "div", { "class": "layer", "style": "z-index: " + ( zindexs[name] || 0 ) + ";" } );
 			Ucren.Element( "extra" ).add( layer );
-			p = layers[name] = Raphael( layer, 640, 480 );
+			p = layers[name] = Raphael( layer, 1280, 960 );
 			// if( Ucren.isSafari )
 			//     p.safari();
 			return p;
@@ -616,9 +616,9 @@ define("scripts/sence.js", function(exports){
 	    var callee = arguments.callee;
 	    var times = callee.times = ++ callee.times || 1;
 	
-	    peach = fruit.create( "peach", 137, 333, true );
-	    sandia = fruit.create( "sandia", 330, 322, true );
-	    boom = fruit.create( "boom", 552, 367, true, 2500 );
+	    peach = fruit.create( "peach", 237, 733, true );
+	    sandia = fruit.create( "sandia", 430, 722, true );
+	    boom = fruit.create( "boom", 652, 767, true, 2500 );
 	
 	    [ peach, sandia, boom ].forEach(function( f ){ f.isHomeMenu = 1; });
 	    peach.isDojoIcon = sandia.isNewGameIcon = boom.isQuitIcon = 1;
@@ -1328,7 +1328,7 @@ define("scripts/factory/fruit.js", function(exports){
 				return ;
 			this.fallOffing = 1;
 	
-			var y = 600;
+			var y = 900;
 	
 			if( typeof x !== "number" )
 			    x = this.originX + random( dropXScope ) * sign[ ( signIndex ++ ) % 2 ];
@@ -1418,8 +1418,8 @@ define("scripts/factory/fruit.js", function(exports){
 	ClassFruit.prototype.onBrokenDropStart = function(){
 		this.brokenTargetX1 = -( random( dropXScope ) + 75 );
 		this.brokenTargetX2 = random( dropXScope + 75 );
-		this.brokenTargetY1 = 600;
-		this.brokenTargetY2 = 600;
+		this.brokenTargetY1 = 900;
+		this.brokenTargetY2 = 900;
 		this.brokenPosX = this.originX;
 		this.brokenPosY = this.originY;
 		this.bImage1RotateAngle = - random( 150 ) - 50;
@@ -3901,7 +3901,7 @@ define("scripts/object/background.js", function(exports){
 	var random = Ucren.randomNumber;
 	
 	exports.set = function(){
-		image = layer.createImage( "default", "images/background.jpg", 0, 0, 640, 480 );
+		image = layer.createImage( "default", "images/background.jpg", 0, 0, 1280, 960 );
 	};
 	
 	exports.wobble = function(){
@@ -3930,7 +3930,7 @@ define("scripts/object/background.js", function(exports){
 define("scripts/object/console.js", function(exports){
 	var layer = require("scripts/layer");
 	
-	var x = 16, y = 0;
+	var x = 16, y = 240;
 	var texts = [];
 	
 	exports.set = function(){
@@ -3970,7 +3970,7 @@ define("scripts/object/developing.js", function(exports){
 	exports.anims = [];
 	
 	exports.set = function(){
-		this.image = layer.createImage( "default", "images/developing.png", 103, 218, 429, 53 ).hide().scale( 1e-5, 1e-5 );
+		this.image = layer.createImage( "default", "images/developing.png", 353, 518, 429, 53 ).hide().scale( 1e-5, 1e-5 );
 	};
 	
 	exports.show = function( start ){
@@ -4017,7 +4017,7 @@ define("scripts/object/dojo.js", function(exports){
 	var rotate = require("scripts/factory/rotate");
 	var tween = require("scripts/lib/tween");
 	
-	exports = rotate.create("images/dojo.png", 41, 240, 175, 175, 1e-5, tween.exponential.co, 500);;
+	exports = rotate.create("images/dojo.png", 141, 640, 175, 175, 1e-5, tween.exponential.co, 500);;
 
 	return exports;
 });
@@ -4232,7 +4232,7 @@ define("scripts/object/fps.js", function(exports){
 	var text, fps = "fps: ";
 	
 	exports.set = function(){
-		text = layer.createText( "default", fps + "0", 4, 470 ).attr( "fill", "#ccc" );
+		text = layer.createText( "default", fps + "0", 4, 870 ).attr( "fill", "#ccc" );
 	};
 	
 	exports.update = function(){
@@ -4262,7 +4262,7 @@ define("scripts/object/game-over.js", function(exports){
 	exports.anims = [];
 	
 	exports.set = function(){
-		this.image = layer.createImage( "default", "images/game-over.png", 75, 198, 490, 85 ).hide().scale( 1e-5, 1e-5 );
+		this.image = layer.createImage( "default", "images/game-over.png", 325, 498, 490, 85 ).hide().scale( 1e-5, 1e-5 );
 	};
 	
 	exports.show = function( start ){
@@ -4310,7 +4310,7 @@ define("scripts/object/home-desc.js", function(exports){
 	var displacement = require("scripts/factory/displacement");
 	var tween = require("scripts/lib/tween");
 	
-	exports = displacement.create("images/home-desc.png", 161, 91, -161, 140, 7, 127, tween.exponential.co, 500);;
+	exports = displacement.create("images/home-desc.png", 161, 91, 61, -80, 7, 327, tween.exponential.co, 500);;
 
 	return exports;
 });
@@ -4323,7 +4323,7 @@ define("scripts/object/home-mask.js", function(exports){
 	var displacement = require("scripts/factory/displacement");
 	var tween = require("scripts/lib/tween");
 	
-	exports = displacement.create("images/home-mask.png", 640, 183, 0, -183, 0, 0, tween.exponential.co, 1e3);;
+	exports = displacement.create("images/home-mask.png", 1280, 183, 0, -83, 0, 200, tween.exponential.co, 1e3);;
 
 	return exports;
 });
@@ -4490,7 +4490,7 @@ define("scripts/object/light.js", function(exports){
 	    this.removeLights();
 	
 	    var dur = 4e3;
-	    var mask = maskLayer.rect( 0, 0, 640, 480 ).attr({ fill: "#fff", stroke: "none" });
+	    var mask = maskLayer.rect( 0, 0, 1280, 960 ).attr({ fill: "#fff", stroke: "none" });
 	    var control = {
 	    	onTimeUpdate: function( time ){
 	    		mask.attr( "opacity", 1 - time / dur );
@@ -4526,11 +4526,11 @@ define("scripts/object/light.js", function(exports){
 	    a1 = pi * a1 / 180;
 	    a2 = pi * a2 / 180;
 	    
-	    x1 = x + 640 * cos( a1 );
-	    y1 = y + 640 * sin( a1 );
+	    x1 = x + 1280 * cos( a1 );
+	    y1 = y + 1280 * sin( a1 );
 	
-	    x2 = x + 640 * cos( a2 );
-	    y2 = y + 640 * sin( a2 );
+	    x2 = x + 1280 * cos( a2 );
+	    y2 = y + 1280 * sin( a2 );
 	
 	    var light = layer.path( [ "M", x, y, "L", x1, y1, "L", x2, y2, "Z" ] ).attr({
 	    	stroke: "none",
@@ -4551,7 +4551,7 @@ define("scripts/object/logo.js", function(exports){
 	var displacement = require("scripts/factory/displacement");
 	var tween = require("scripts/lib/tween");
 	
-	exports = displacement.create("images/logo.png", 288, 135, 17, -182, 17, 1, tween.exponential.co, 1e3);;
+	exports = displacement.create("images/logo.png", 288, 135, 17, -82, 17, 201, tween.exponential.co, 1e3);;
 
 	return exports;
 });
@@ -4712,7 +4712,7 @@ define("scripts/object/new-game.js", function(exports){
 	var rotate = require("scripts/factory/rotate");
 	var tween = require("scripts/lib/tween");
 	
-	exports = rotate.create("images/new-game.png", 244, 231, 195, 195, 1e-5, tween.exponential.co, 500);;
+	exports = rotate.create("images/new-game.png", 344, 631, 195, 195, 1e-5, tween.exponential.co, 500);;
 
 	return exports;
 });
@@ -4730,7 +4730,7 @@ define("scripts/object/new.js", function(exports){
 	var image;
 	var cycleTime = 300;
 	
-	var sx = 129, sy = 328, ex = 170, ey = 221, sw = 0, sh = 0, ew = 70, eh = 42, dy = 8;
+	var sx = 129, sy = 328, ex = 170, ey = 621, sw = 0, sh = 0, ew = 70, eh = 42, dy = 8;
 	
 	var showAnim = tween.exponential.co;
 	var jumpAnim = tween.quadratic.ci;
@@ -4809,7 +4809,7 @@ define("scripts/object/ninja.js", function(exports){
 	var displacement = require("scripts/factory/displacement");
 	var tween = require("scripts/lib/tween");
 	
-	exports = displacement.create("images/ninja.png", 244, 81, 315, -140, 315, 43, {
+	exports = displacement.create("images/ninja.png", 244, 81, 315, 40, 315, 243, {
 		show: tween.bounce.co,
 		hide: tween.exponential.co
 	}, 1e3);;
@@ -4825,7 +4825,7 @@ define("scripts/object/quit.js", function(exports){
 	var rotate = require("scripts/factory/rotate");
 	var tween = require("scripts/lib/tween");
 	
-	exports = rotate.create("images/quit.png", 493, 311, 141, 141, 1e-5, tween.exponential.co, 500);;
+	exports = rotate.create("images/quit.png", 593, 711, 141, 141, 1e-5, tween.exponential.co, 500);;
 
 	return exports;
 });
@@ -4858,9 +4858,9 @@ define("scripts/object/score.js", function(exports){
 	exports.anims = [];
 	
 	exports.set = function(){
-	    image = layer.createImage( "default", "images/score.png", imageSx, 8, 29, 31 ).hide();
-	    text1 = layer.createText( "default", "0", text1Sx, 24, "90-#fc7f0c-#ffec53", "30px" ).hide();
-	    text2 = layer.createText( "default", "BEST 999", text2Sx, 48, "#af7c05", "14px" ).hide();
+	    image = layer.createImage( "default", "images/score.png", imageSx, 248, 29, 31 ).hide();
+	    text1 = layer.createText( "default", "0", text1Sx, 264, "90-#fc7f0c-#ffec53", "30px" ).hide();
+	    text2 = layer.createText( "default", "BEST 999", text2Sx, 288, "#af7c05", "14px" ).hide();
 	};
 	
 	exports.show = function( start ){
