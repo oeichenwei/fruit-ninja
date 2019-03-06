@@ -64,7 +64,7 @@ exports.showLoseAt = function( x ){
     infx[0].attr( "src", infx[1].src.replace( "x.png", "xf.png" ) ).scale( 1e-5, 1e-5 );
     this.scaleImage( infx[0] );
     
-    if( number == 3 )
+    if( number == 300 )
         message.postMessage( "game.over" );
 };
 

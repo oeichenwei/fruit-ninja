@@ -2293,9 +2293,9 @@ define("scripts/lib/buzz.js", function(exports){
 	                this.loop();
 	            }
 	
-	            if ( options.autoplay ) {
-	                this.sound.autoplay = 'autoplay';
-	            }
+	            //if ( options.autoplay ) {
+	            //    this.sound.autoplay = 'autoplay';
+	            //}
 	
 	            if ( options.preload === true ) {
 	                this.sound.preload = 'auto';
@@ -4620,7 +4620,7 @@ define("scripts/object/lose.js", function(exports){
 	    infx[0].attr( "src", infx[1].src.replace( "x.png", "xf.png" ) ).scale( 1e-5, 1e-5 );
 	    this.scaleImage( infx[0] );
 	    
-	    if( number == 3 )
+	    if( number == 300 )
 	        number = 0,
 	        message.postMessage( "game.over" );
 	};
