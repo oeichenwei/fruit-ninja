@@ -3918,7 +3918,7 @@ define("scripts/object/background.js", function(exports){
 	    x = random( 12 ) - 6;
 	    y = random( 12 ) - 6;
 	    image.attr({ x: x, y: y });
-	};;
+	};
 
 	return exports;
 });
@@ -3930,7 +3930,7 @@ define("scripts/object/background.js", function(exports){
 define("scripts/object/console.js", function(exports){
 	var layer = require("scripts/layer");
 	
-	var x = 16, y = 240;
+	var x = 16, y = 140;
 	var texts = [];
 	
 	exports.set = function(){
@@ -4310,7 +4310,7 @@ define("scripts/object/home-desc.js", function(exports){
 	var displacement = require("scripts/factory/displacement");
 	var tween = require("scripts/lib/tween");
 	
-	exports = displacement.create("images/home-desc.png", 161, 91, 61, -80, 7, 327, tween.exponential.co, 500);;
+	exports = displacement.create("images/home-desc.png", 161, 91, 61, -80, 7, 200, tween.exponential.co, 500);;
 
 	return exports;
 });
@@ -4323,7 +4323,7 @@ define("scripts/object/home-mask.js", function(exports){
 	var displacement = require("scripts/factory/displacement");
 	var tween = require("scripts/lib/tween");
 	
-	exports = displacement.create("images/home-mask.png", 1280, 183, 0, -83, 0, 200, tween.exponential.co, 1e3);;
+	exports = displacement.create("images/home-mask.png", 1280, 183, 0, -110, 0, 70, tween.exponential.co, 1e3);;
 
 	return exports;
 });
@@ -4551,7 +4551,7 @@ define("scripts/object/logo.js", function(exports){
 	var displacement = require("scripts/factory/displacement");
 	var tween = require("scripts/lib/tween");
 	
-	exports = displacement.create("images/logo.png", 288, 135, 17, -82, 17, 201, tween.exponential.co, 1e3);;
+	exports = displacement.create("images/logo.png", 288, 135, 17, -82, 17, 81, tween.exponential.co, 1e3);;
 
 	return exports;
 });
@@ -4809,7 +4809,7 @@ define("scripts/object/ninja.js", function(exports){
 	var displacement = require("scripts/factory/displacement");
 	var tween = require("scripts/lib/tween");
 	
-	exports = displacement.create("images/ninja.png", 244, 81, 315, 40, 315, 243, {
+	exports = displacement.create("images/ninja.png", 244, 81, 315, -40, 315, 121, {
 		show: tween.bounce.co,
 		hide: tween.exponential.co
 	}, 1e3);;
@@ -4851,16 +4851,16 @@ define("scripts/object/score.js", function(exports){
 	
 	var image, text1, text2, animLength = 500;;
 	
-	var imageSx = -94, imageEx = 6;
-	var text1Sx = -59, text1Ex = 41;
-	var text2Sx = -93, text2Ex = 7;
+	var imageSx = -94, imageEx = 16;
+	var text1Sx = -59, text1Ex = 51;
+	var text2Sx = -93, text2Ex = 17;
 	
 	exports.anims = [];
 	
 	exports.set = function(){
-	    image = layer.createImage( "default", "images/score.png", imageSx, 248, 29, 31 ).hide();
-	    text1 = layer.createText( "default", "0", text1Sx, 264, "90-#fc7f0c-#ffec53", "30px" ).hide();
-	    text2 = layer.createText( "default", "BEST 999", text2Sx, 288, "#af7c05", "14px" ).hide();
+	    image = layer.createImage( "default", "images/score.png", imageSx, 148, 29, 31 ).hide();
+	    text1 = layer.createText( "default", "0", text1Sx, 164, "90-#fc7f0c-#ffec53", "30px" ).hide();
+	    text2 = layer.createText( "default", "BEST 999", text2Sx, 188, "#af7c05", "14px" ).hide();
 	};
 	
 	exports.show = function( start ){
