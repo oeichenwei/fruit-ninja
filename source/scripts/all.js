@@ -456,8 +456,10 @@ define("scripts/main.js", function(exports){
 	                    sence.switchSence( "dojo-body" ); break;
 	                case fruit.isNewGameIcon:
 	                    sence.switchSence( "game-body" ); break;
-	                case fruit.isQuitIcon:
-	                    sence.switchSence( "quit-body" ); break;
+					case fruit.isQuitIcon:
+						history.back();
+						break;
+	                    //sence.switchSence( "quit-body" ); break;
 	            }
 	        return ;
 	    }
@@ -4294,7 +4296,10 @@ define("scripts/object/game-over.js", function(exports){
 	
 	exports.onZoomEnd = function( sz, ez, mode ){
 		if( mode == "show" )
+		{
 			state( "click-enable" ).on();
+			message.postMessage("game", "click");
+		}
 	    else if( mode === "hide" )
 	        this.image.hide();
 	};;
