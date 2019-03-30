@@ -44,7 +44,7 @@ define("scripts/collide.js", function(exports){
 		    	knife.slice( 0, 2 ), 
 		    	knife.slice( 2, 4 ), 
 		    	[ fruit.originX, fruit.originY ],
-		    	fruit.radius
+		    	fruit.radius + 20
 		    );
 		    if( ck )
 		        ret[ index ++ ] = fruit;
