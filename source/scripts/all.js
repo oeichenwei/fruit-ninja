@@ -460,7 +460,7 @@ define("scripts/main.js", function(exports){
 	                case fruit.isNewGameIcon:
 	                    sence.switchSence( "game-body" ); break;
 					case fruit.isQuitIcon:
-						history.back();
+						location.href = "../index.html";
 						break;
 	                    //sence.switchSence( "quit-body" ); break;
 	            }
@@ -623,7 +623,7 @@ define("scripts/sence.js", function(exports){
 	
 	    peach = fruit.create( "peach", 237, gheight - 167, true );
 	    sandia = fruit.create( "sandia", 530, gheight - 178, true );
-	    boom = fruit.create( "boom", 852, gheight - 133, true, 2500 );
+	    boom = fruit.create( "boom", gwidth - 240, gheight - 160, true, 2500 );
 	
 	    [ peach, sandia, boom ].forEach(function( f ){ f.isHomeMenu = 1; });
 	    peach.isDojoIcon = sandia.isNewGameIcon = boom.isQuitIcon = 1;
@@ -4584,9 +4584,9 @@ define("scripts/object/lose.js", function(exports){
 	
 	var o1, o2, o3, animLength = 500;
 	
-	var conf1 = { src: "images/x.png", sx: 650, ex: 561, y: 5, w: 22, h: 19 };
-	var conf2 = { src: "images/xx.png", sx: 671, ex: 582, y: 5, w: 27, h: 26 };
-	var conf3 = { src: "images/xxx.png", sx: 697, ex: 608, y: 6, w: 31, h: 32 };
+	var conf1 = { src: "images/x.png", sx: gwidth - 99, ex: gwidth - 79, y: 5, w: 22, h: 19 };
+	var conf2 = { src: "images/xx.png", sx: gwidth - 78, ex: gwidth - 58, y: 5, w: 27, h: 26 };
+	var conf3 = { src: "images/xxx.png", sx: gwidth - 52, ex: gwidth - 32, y: 6, w: 31, h: 32 };
 	
 	var number = 0;
 	
@@ -4833,7 +4833,7 @@ define("scripts/object/quit.js", function(exports){
 	var rotate = require("scripts/factory/rotate");
 	var tween = require("scripts/lib/tween");
 	
-	exports = rotate.create("images/quit.png", 788, gheight - 189, 141, 141, 1e-5, tween.exponential.co, 500);;
+	exports = rotate.create("images/quit.png", gwidth - 300, gheight - 220, 141, 141, 1e-5, tween.exponential.co, 500);;
 
 	return exports;
 });
