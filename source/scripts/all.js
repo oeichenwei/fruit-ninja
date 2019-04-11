@@ -7,6 +7,7 @@
 
 var gwidth = document.getElementById("extra").offsetWidth;
 var gheight = document.getElementById("extra").offsetHeight;
+var fratio = gwidth / 1280;
 
 void function(global){
 	var mapping = {}, cache = {};
@@ -621,9 +622,9 @@ define("scripts/sence.js", function(exports){
 	    var callee = arguments.callee;
 	    var times = callee.times = ++ callee.times || 1;
 	
-	    peach = fruit.create( "peach", 237, gheight - 167, true );
-	    sandia = fruit.create( "sandia", 530, gheight - 178, true );
-	    boom = fruit.create( "boom", gwidth - 240, gheight - 160, true, 2500 );
+	    peach = fruit.create( "peach", 240*fratio, gheight - 140*fratio, true );
+	    sandia = fruit.create( "sandia", 530*fratio, gheight - 145*fratio, true );
+	    boom = fruit.create( "boom", gwidth - 207*fratio, gheight - 126*fratio, true, 2500 );
 	
 	    [ peach, sandia, boom ].forEach(function( f ){ f.isHomeMenu = 1; });
 	    peach.isDojoIcon = sandia.isNewGameIcon = boom.isQuitIcon = 1;
@@ -1159,12 +1160,12 @@ define("scripts/factory/fruit.js", function(exports){
 	
 	var infos = {
 		// type: [ imageSrc, width, height, radius, fixAngle, isReverse, juiceColor ]
-		boom: [ "images/fruit/boom.png", 66, 68, 26, 0, 0, null ],
-		peach: [ "images/fruit/peach.png", 62, 59, 37, -50, 0, "#e6c731" ],
-		sandia: [ "images/fruit/sandia.png", 98, 85, 38, -100, 0, "#c00" ],
-		apple: [ "images/fruit/apple.png", 66, 66, 31, -54, 0, "#c8e925" ],
-		banana: [ "images/fruit/banana.png", 126, 50, 43, 90, 0, null ],
-		basaha: [ "images/fruit/basaha.png", 68, 72, 32, -135, 0, "#c00" ]
+		boom: [ "images/fruit/boom.png", 66*fratio, 68*fratio, 26*fratio, 0, 0, null ],
+		peach: [ "images/fruit/peach.png", 62*fratio, 59*fratio, 37*fratio, -50, 0, "#e6c731" ],
+		sandia: [ "images/fruit/sandia.png", 98*fratio, 85*fratio, 38*fratio, -100, 0, "#c00" ],
+		apple: [ "images/fruit/apple.png", 66*fratio, 66*fratio, 31*fratio, -54, 0, "#c8e925" ],
+		banana: [ "images/fruit/banana.png", 126*fratio, 50*fratio, 43*fratio, 90, 0, null ],
+		basaha: [ "images/fruit/basaha.png", 68*fratio, 72*fratio, 32*fratio, -135, 0, "#c00" ]
 	};
 	
 	// TODO: 是否水果全开？
@@ -4022,7 +4023,7 @@ define("scripts/object/dojo.js", function(exports){
 	var rotate = require("scripts/factory/rotate");
 	var tween = require("scripts/lib/tween");
 	
-	exports = rotate.create("images/dojo.png", 143, gheight - 260, 175, 175, 1e-5, tween.exponential.co, 500);;
+	exports = rotate.create("images/dojo.png", (235-87)*fratio, gheight - (145+87)*fratio, 175*fratio, 175*fratio, 1e-5, tween.exponential.co, 500);;
 
 	return exports;
 });
@@ -4720,7 +4721,7 @@ define("scripts/object/new-game.js", function(exports){
 	var rotate = require("scripts/factory/rotate");
 	var tween = require("scripts/lib/tween");
 	
-	exports = rotate.create("images/new-game.png", 440, gheight - 270, 195, 195, 1e-5, tween.exponential.co, 500);;
+	exports = rotate.create("images/new-game.png", (540 - 97)*fratio, gheight - (140+97)*fratio, 195*fratio, 195*fratio, 1e-5, tween.exponential.co, 500);;
 
 	return exports;
 });
@@ -4738,7 +4739,7 @@ define("scripts/object/new.js", function(exports){
 	var image;
 	var cycleTime = 300;
 	
-	var sx = 129, sy = 328, ex = 160, ey = gheight - 279, sw = 0, sh = 0, ew = 70, eh = 42, dy = 8;
+	var sx = 129, sy = 328, ex = 160*fratio, ey = gheight - 279*fratio, sw = 0, sh = 0, ew = 70*fratio, eh = 42*fratio, dy = 8;
 	
 	var showAnim = tween.exponential.co;
 	var jumpAnim = tween.quadratic.ci;
@@ -4833,7 +4834,7 @@ define("scripts/object/quit.js", function(exports){
 	var rotate = require("scripts/factory/rotate");
 	var tween = require("scripts/lib/tween");
 	
-	exports = rotate.create("images/quit.png", gwidth - 300, gheight - 220, 141, 141, 1e-5, tween.exponential.co, 500);;
+	exports = rotate.create("images/quit.png", gwidth - (200 + 71)*fratio, gheight - (116+71)*fratio, 141*fratio, 141*fratio, 1e-5, tween.exponential.co, 500);;
 
 	return exports;
 });
