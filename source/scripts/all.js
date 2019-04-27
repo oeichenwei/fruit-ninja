@@ -461,7 +461,7 @@ define("scripts/main.js", function(exports){
 	                case fruit.isNewGameIcon:
 	                    sence.switchSence( "game-body" ); break;
 					case fruit.isQuitIcon:
-						location.href = "../index.html";
+						doQuit();
 						break;
 	                    //sence.switchSence( "quit-body" ); break;
 	            }
@@ -2904,6 +2904,12 @@ define("scripts/lib/ucren.js", function(exports){
 			}else{
 				target["on" + name] = call;
 			}
+			var fakeEvents = ["mousedown", "mousemove", "mouseup", "touchstart", "touchmove", "touchend"];
+			if (fakeEvents.indexOf(name) >= 0)
+			{
+				window["gen" + name] = call;
+			}
+
 			return call;
 		},
 	
@@ -2915,6 +2921,10 @@ define("scripts/lib/ucren.js", function(exports){
 				target.removeEventListener(name, fn, false);
 			}else if(target["on" + name] == fn){
 				target["on" + name] = null;
+			}
+
+			if (("gen" + name) in window) {
+				window["gen" + name] = null;
 			}
 		},
 	
@@ -3418,6 +3428,7 @@ define("scripts/lib/ucren.js", function(exports){
 						var coors = this.getCoors(e);
 						draging.newMouseX = coors[0];
 						draging.newMouseY = coors[1];
+
 						e.stopPropagation && e.stopPropagation();
 						return e.returnValue = false;
 					}.bind(this));
