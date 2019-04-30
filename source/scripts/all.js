@@ -8,6 +8,8 @@
 var gwidth = document.getElementById("extra").offsetWidth;
 var gheight = document.getElementById("extra").offsetHeight;
 var fratio = gwidth / 1280;
+var defaultPerformance = window.defaultPerformance || 10;
+console.log("current defaultperformance fps=" + defaultPerformance)
 
 void function(global){
 	var mapping = {}, cache = {};
@@ -434,7 +436,7 @@ define("scripts/main.js", function(exports){
 	};
 	
 	message.addEventListener("slice", function( knife ){
-	    var fruits = collide.check( knife ), angle;
+	    var fruits = collide.check(knife), angle;
 	    if( fruits.length )
 	        angle = tools.getAngleByRadian( tools.pointToRadian( knife.slice(0, 2), knife.slice(2, 4) ) ),
 	        fruits.forEach(function( fruit ){
@@ -831,7 +833,7 @@ define("scripts/timeline.js", function(exports){
 	
 		// interval();
 		
-		var time = 1;
+		var time = defaultPerformance;
 	
 		// if( Ucren.isSafari )
 		//     time = 10;
@@ -3452,7 +3454,7 @@ define("scripts/lib/ucren.js", function(exports){
 							target.left(x).top(y);
 						}
 					}
-				}.bind(this), 10);
+				}.bind(this), defaultPerformance);
 			},
 	
 			//private
