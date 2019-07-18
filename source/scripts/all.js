@@ -1500,7 +1500,7 @@ define("scripts/factory/fruit.js", function(exports){
 	};
 	
 	function getType(){
-		if( random( 8 ) == 4 )
+		if( random( 16 ) == 8 )
 		    return "boom";
 		else
 	    	return types[ random( 5 ) ];
