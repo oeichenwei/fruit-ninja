@@ -2906,10 +2906,19 @@ define("scripts/lib/ucren.js", function(exports){
 			}else{
 				target["on" + name] = call;
 			}
-			var fakeEvents = ["mousedown", "mousemove", "mouseup", "touchstart", "touchmove", "touchend"];
-			if (fakeEvents.indexOf(name) >= 0)
+			var fakeMouseEvents = ["mousedown", "mousemove", "mouseup"];
+			var fakeTouchEvents = ["touchstart", "touchmove", "touchend"];
+			var i = fakeMouseEvents.indexOf(name);
+			if (i >= 0)
 			{
 				window["gen" + name] = call;
+				window["gen" + fakeTouchEvents[i]] = call;
+			}
+			i = fakeTouchEvents.indexOf(name);
+			if (i >= 0)
+			{
+				window["gen" + name] = call;
+				window["gen" + fakeMouseEvents[i]] = call;
 			}
 
 			return call;
