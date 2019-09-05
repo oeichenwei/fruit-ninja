@@ -90,7 +90,7 @@ em{
 	height: 100%;
     border: 1px solid #0099CC;
     border-radius: 10px;
-	font-size: xx-large;
+	font-size: 3vh;
     line-height: 100px;
     text-align: center;
     float: left;
@@ -111,7 +111,7 @@ em{
     color: #fff;
     float: left;
     border-radius: 10px;
-	font-size: xx-large;
+	font-size: 3vh;
     line-height: 100px;
     text-align: center;
 }
@@ -124,7 +124,7 @@ em{
 	height: 100%;
     border: 1px solid #0099CC;
     border-radius: 10px;
-	font-size: xx-large;
+	font-size: 3vh;
     line-height: 100px;
     text-align: center;
 }
@@ -144,7 +144,7 @@ em{
     color: #fff;
     float: left;
     border-radius: 10px;
-	font-size: xx-large;
+	font-size: 3vh;
     line-height: 100px;
     text-align: center;
 }
