@@ -201,7 +201,7 @@ define("scripts/game.js", function(exports){
 	
 	var random = Ucren.randomNumber;
 	
-	var volleyNum = 2, volleyMultipleNumber = 5;
+	var volleyNum = 4, volleyMultipleNumber = 5;
 	var fruits = [];
 	var gameInterval;
 	
@@ -244,7 +244,7 @@ define("scripts/game.js", function(exports){
 	    // }, 2000);
 	
 	    scoreNumber = 0;
-	    volleyNum = 2;
+	    volleyNum = 4;
 	    fruits.length = 0;
 	};
 	
